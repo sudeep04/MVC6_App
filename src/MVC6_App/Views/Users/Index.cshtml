@@ -1,0 +1,39 @@
+@model IEnumerable<MVC6_App.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserNumber)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserNumber)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+        </td>
+    </tr>
+}
+</table>
